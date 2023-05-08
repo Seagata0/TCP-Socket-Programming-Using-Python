@@ -1,7 +1,7 @@
 <h1>Tugas Besar Jaringan Komputer Mata Kuliah Jarkom</h1>
-Telkom University
-Mata Kuliah: Jaringan Komputer
-Kelas: IF-45-01
+Telkom University<br>
+Mata Kuliah: Jaringan Komputer<br>
+Kelas: IF-45-01<br>
 
 <h1>Kelompok 6</h1>
 <li>YANDE SATWIKA YASA (1301210145)
