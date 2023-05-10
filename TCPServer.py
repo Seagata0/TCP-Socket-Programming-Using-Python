@@ -51,7 +51,7 @@ while True:
         print('\n\tcould not open the file...\n\n\t...error message to the requester\n\n')
         if (len(lst)==2):
             error_content = '\nSo Stupid, you type wrong file Failure!\n'
-            connectionSocket.send(error_content.encode('utf-8'))
+            sendtoclient(connectionSocket, 404, 'Not Found', error_content)
         else:
             error_file = open("404.html")
             error_content = error_file.read()
