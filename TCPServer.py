@@ -35,7 +35,9 @@ while True:
     print('filename : ', filename)
 
     try:
-        if (filename[0] == '/'):
+        if (filename[0] == '/' and len(filename)==1):
+            f = open('index.html')
+        elif (filename[0] == '/'):
             f = open(filename[1:])
             filename = filename[1:]
         else :
