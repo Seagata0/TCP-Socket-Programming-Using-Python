@@ -38,7 +38,7 @@ while True: #melakukan perulangan selama true
         elif (filename[0] == '/'): #jika filename filename index 0-nya adalah / 
             filename = filename[1:] #filenamennya dimulai dari index 1 bukan dari 0
             f = open(filename) #open filename yang di request
-        else : #jika bukan keduanya
+        else : #jika bukan keduanya 
             f = open(filename) #open filename yang di request
         
         file_content = f.read() #inisialisasi file_content yang berisi data dari f yang telah di read
@@ -53,7 +53,7 @@ while True: #melakukan perulangan selama true
         if (len(lst)==2): #jika lenght dari list = 2 menandakan request berasal dari TCPClient.py
             error_content = '\nSo Stupid, you type wrong file Failure!\n' #inisialisasi error_content
             sendtoclient(connectionSocket, 404, 'Not Found', error_content) #mengirimkan error_content menuju ke client
-        else:
+        else: #else berarti diakses dari browser
             error_file = open("404.html") #open 404.html lalu simpan ke variabel error_file
             error_content = error_file.read() #membaca isi error_file untuk dijadikan error content
             sendtoclient(connectionSocket, 404, 'Not Found', error_content) #mengirimkan error_content menuju ke client
