@@ -16,4 +16,4 @@ while True: #melakukan perulangan selama true
     print(response) #melakukan print string response 
     break #stop
 
-clientSocket.close() #menutup koneksi ke server
+clientSocket.close() #menutup koneksi clientsocket ke server
