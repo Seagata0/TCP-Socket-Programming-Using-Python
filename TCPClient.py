@@ -1,19 +1,19 @@
-from socket import *
-import sys
+from socket import * #import * dari library socket
+import sys #import library sys
 
-serverhost = 'localhost'
-serverport = 16265
+serverhost = 'localhost' #inisialiasi serverhost
+serverport = 16265 #inisialisasi serverport
 
-clientSocket = socket(AF_INET, SOCK_STREAM)
-clientSocket.connect((serverhost, serverport))
+clientSocket = socket(AF_INET, SOCK_STREAM) #inisialisasi client socket memakai IPv4 & TCP
+clientSocket.connect((serverhost, serverport)) #meng-establish koneksi ke server memakai serverhost & port
 
-sentence = sys.argv[1] + ' ' + sys.argv[2]
-clientSocket.send(sentence.encode('utf-8'))
-response = ''
+response = '' #inisialisasi string response
+sentence = sys.argv[1] + ' ' + sys.argv[2] #membuat argument method dan filename menjadi sebuah string
+clientSocket.send(sentence.encode('utf-8')) # mengirimkan sentence memakai encode utf-8 melalui clientsocket
 
-while True:
-    response += clientSocket.recv(1024).decode()
-    print(response)
-    break
+while True: #melakukan perulangan selama true
+    response += clientSocket.recv(1024).decode() #menerima response dari server dan melakukan decode lalu disimpan pada variabel response
+    print(response) #melakukan print string response 
+    break #stop
 
-clientSocket.close()
+clientSocket.close() #menutup koneksi ke server
