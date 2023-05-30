@@ -11,8 +11,11 @@ def sendtoclient(connectionSocket, status_code, status_text, file_content):
     connectionSocket.send(response.encode('utf-8'))
 
 while True:
-    print("ごきげんよう、ご主人様")
-    print("The server is ready to serve you")
+    print("Hello, how are yu")
+    print("I am under the water")
+    print("Please help me")
+    print("There is too much rain whoooo")
+    print("\nThe server is ready to serve you")
 
     connectionSocket, addr = serverSocket.accept()
     msg = connectionSocket.recv(1024).decode()
@@ -32,7 +35,9 @@ while True:
     print('filename : ', filename)
 
     try:
-        if (filename[0] == '/'):
+        if (filename[0] == '/' and len(filename)==1):
+            f = open('index.html')
+        elif (filename[0] == '/'):
             f = open(filename[1:])
             filename = filename[1:]
         else :
@@ -41,18 +46,17 @@ while True:
         file_content = f.read()
         outputdata = f
         print('\nopen() output : ', outputdata)
-
         sendtoclient(connectionSocket, 200, 'OK', file_content)
-
-        print('\n\tsuccessfully sent %s to the requester\n' % (filename))
+        print('\n\tsuccessfully sent %s to the client\n' % (filename))
     
     except IOError:
-        print('\n\tcould not open the file...\n\n\t...error msg to the requester\n\n')
+        print('\n\tcould not open the file...\n\n\t...error message to the requester\n\n')
         if (len(lst)==2):
-            error_content = '\nHTTP/1.1\n404\nSomething went wrong, only a programmer can fix it...\n'
+            error_content = '\nSo Stupid, you type wrong file Failure!\n'
             connectionSocket.send(error_content.encode('utf-8'))
         else:
-            error_content = '<html><body><h1>404 Not Found</h1></body></html>'
+            error_file = open("404.html")
+            error_content = error_file.read()
             sendtoclient(connectionSocket, 404, 'Not Found', error_content)
         
     connectionSocket.close()
